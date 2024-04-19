@@ -1,17 +1,18 @@
 package com.riwi.MyFirstWeb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.riwi.MyFirstWeb.entity.Coder;
 import com.riwi.MyFirstWeb.services.CoderService;
 
-import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -23,10 +24,14 @@ public class CoderController
     private CoderService coderService; //Inyectando una dependencia 
 
     @GetMapping("/coderPage") //dar nombre a la ruta de la vista, si se deja sola ira a la ruta raiz
-    public String showViewAll(Model model)
-    {
-        List<Coder> list = this.coderService.findAll();
+    public String showViewAll(Model model, 
+        @RequestParam(defaultValue = "1") int page, 
+        @RequestParam(defaultValue = "4") int size)
+    {               
+        Page<Coder> list = this.coderService.findAllPaginate(page - 1, size);
         model.addAttribute("coderList", list);//La llave se usa para acceder desde html (llave , valor)
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", list.getTotalPages());
 
         return "coderPage";//Return coders view with file name
     }

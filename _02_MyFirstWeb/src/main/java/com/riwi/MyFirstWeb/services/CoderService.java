@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.riwi.MyFirstWeb.entity.Coder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.riwi.MyFirstWeb.repository.CoderRepository;
@@ -19,6 +22,19 @@ public class CoderService
     public List<Coder> findAll()
     {
         return this.coderRepository.findAll();
+    }
+
+    public Page<Coder> findAllPaginate(int page, int size)
+    {
+        //Validar que no sea menor a cero
+        if (page < 0) 
+        {
+            page = 0;    
+        }
+
+        //Crear paginacion
+        Pageable pageable = PageRequest.of(page, size);
+        return this.coderRepository.findAll(pageable);
     }
 
     public Coder addCoder(Coder coder)
