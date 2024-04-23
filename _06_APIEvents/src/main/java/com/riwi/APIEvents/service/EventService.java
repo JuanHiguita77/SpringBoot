@@ -2,7 +2,10 @@ package com.riwi.APIEvents.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.riwi.APIEvents.entities.Event;
@@ -22,6 +25,19 @@ public class EventService implements IEventService
     public List<Event> getAll() 
     {
         return this.eventRepository.findAll();
+    }
+
+    public Page<Event> findAllPaginate(int page, int size)
+    {
+        //Validar que no sea menor a cero
+        if (page < 0) 
+        {
+            page = 0;    
+        }
+
+        //Crear paginacion
+        Pageable pageable = PageRequest.of(page, size);
+        return this.eventRepository.findAll(pageable);
     }
 
     @Override
