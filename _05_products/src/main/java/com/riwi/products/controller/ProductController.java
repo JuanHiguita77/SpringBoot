@@ -24,7 +24,7 @@ import lombok.AllArgsConstructor;
 public class ProductController
 {
     @Autowired
-    private final IProductService IProductService;
+    private final IProductService IProductService;//final: no se puede modificar mas adelante la variable
     
     @GetMapping
     //Un generico que devuelve una lista de genericos tipo productos
@@ -65,7 +65,7 @@ public class ProductController
         return ResponseEntity.ok(this.IProductService.findById(id));
     }
 
-    @GetMapping("search/{name}")
+    @GetMapping("/search/{name}")
     public ResponseEntity<List<Product>> findByName(@PathVariable String name)
     {
         return ResponseEntity.ok(this.IProductService.search(name));
