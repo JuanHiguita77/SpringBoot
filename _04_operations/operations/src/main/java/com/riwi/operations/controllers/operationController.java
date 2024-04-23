@@ -35,7 +35,15 @@ public class operationController
     @PostMapping(path = "/div") //More specific path
     public String divide(@RequestBody Operations operations)
     {
-        String message = String.valueOf(operations.getNum1() / operations.getNum2());
-        return "Your Result is: " + message;
+        if(operations.getNum2() != 0)
+        {
+          String message = String.valueOf(operations.getNum1() / operations.getNum2());  
+          return "Your Result is: " + message;
+        }
+        else
+        {
+          return "IMPOSIBLE TO DIVIDE WITH 0";
+        }
     }
+
 }
