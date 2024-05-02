@@ -1,0 +1,404 @@
+{
+	"info": {
+		"_postman_id": "9c9b2991-56a1-48c6-aa26-9fc80a881caf",
+		"name": "BeautyCenter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29104128"
+	},
+	"item": [
+		{
+			"name": "service",
+			"item": [
+				{
+					"name": "LIST ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlService}}",
+							"host": [
+								"{{urlService}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"pestañas\",\r\n    \"description\": \"se ponen pestañas\",\r\n    \"price\": 51120\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlService}}/add",
+							"host": [
+								"{{urlService}}"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"new\",\r\n    \"description\": \"new description\",\r\n    \"price\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlService}}/update/1",
+							"host": [
+								"{{urlService}}"
+							],
+							"path": [
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlService}}/delete/1",
+							"host": [
+								"{{urlService}}"
+							],
+							"path": [
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "LIST ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlAppointment}}",
+							"host": [
+								"{{urlAppointment}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date_time\": \"2024-05-10T15:55:05\",\r\n    \"duration\": \"10\",\r\n    \"comments\": \"LLevar el pelo limpio\",\r\n    \"client_id\": 1,\r\n    \"service_id\": 2,\r\n    \"employee_id\": 4\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAppointment}}/add",
+							"host": [
+								"{{urlAppointment}}"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date_time\": \"2024-05-10T15:55:05\",\r\n    \"duration\": \"10\",\r\n    \"comments\": \"LLevar las uñas limpias\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlAppointment}}/update/1",
+							"host": [
+								"{{urlAppointment}}"
+							],
+							"path": [
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlAppointment}}/delete/3",
+							"host": [
+								"{{urlAppointment}}"
+							],
+							"path": [
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "client",
+			"item": [
+				{
+					"name": "LIST ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlClient}}",
+							"host": [
+								"{{urlClient}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Luisa\",\r\n    \"last_name\": \"Higuita\",\r\n    \"phone\": \"+57 656665550\",\r\n    \"email\": \"luisa@client.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlClient}}/add",
+							"host": [
+								"{{urlClient}}"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Juan\",\r\n    \"last_name\": \"Higuita\",\r\n    \"phone\": \"+57 656665550\",\r\n    \"email\": \"juanfer@client.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlClient}}/update/1",
+							"host": [
+								"{{urlClient}}"
+							],
+							"path": [
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlClient}}/delete/2",
+							"host": [
+								"{{urlClient}}"
+							],
+							"path": [
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employee",
+			"item": [
+				{
+					"name": "LIST",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlEmployee}}",
+							"host": [
+								"{{urlEmployee}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"Juan add\",\r\n    \"last_name\": \"yepes\",\r\n    \"email\": \"juansito@gmail.com\",\r\n    \"phone\": \"+54 321321\",\r\n    \"role\": \"vendedor de escobas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlEmployee}}/add",
+							"host": [
+								"{{urlEmployee}}"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Juansito Actualizado\",\r\n    \"last_name\": \"yepes\",\r\n    \"email\" : \"juan777@gmail.com\",\r\n    \"phone\": \"+57 21321132\",\r\n    \"role\": \"limpieza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{urlEmployee}}/update/4",
+							"host": [
+								"{{urlEmployee}}"
+							],
+							"path": [
+								"update",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{urlEmployee}}/delete/6",
+							"host": [
+								"{{urlEmployee}}"
+							],
+							"path": [
+								"delete",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "urlService",
+			"value": "http://localhost:8080/api/v1/service",
+			"type": "string"
+		},
+		{
+			"key": "urlEmployee",
+			"value": "http://localhost:8080/api/v1/employee",
+			"type": "string"
+		},
+		{
+			"key": "urlClient",
+			"value": "http://localhost:8080/api/v1/client",
+			"type": "string"
+		},
+		{
+			"key": "urlAppointment",
+			"value": "http://localhost:8080/api/v1/appointment",
+			"type": "string"
+		}
+	]
+}
