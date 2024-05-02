@@ -23,4 +23,5 @@ public class Event
     private Date date_event;
     private String ubication;
     private int capacity;
+    
 }

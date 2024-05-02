@@ -1,0 +1,94 @@
+Se requiere hacer una aplicación web para la venta de tickets online, el proyecto deberá tener: 
+
+1 - VISTAS 
+ 	- Main page
+	- Tarjeta flotante para cada info adicional de un evento:
+		- Tendra: 
+	- Formulario para completar compra 
+	- Administrador:
+		- Vista Login para Admin
+		- Vista para añadir un evento
+	- Usuario:
+		- Vista registro de usuario
+		- Vista login de usuario (La misma que el Admin) (Redirecciona al main page)
+
+2 - Un buscador por titulo, ciudad o categoría. 
+3 - Admins los cuales podrán publicar nuevos eventos, eliminar o modificarlos. 
+4 - Los usuarios podrán tener su carrito de compras, al momento de realizar el proceso de pago se llevara a un formulario donde se le pedirá información adicional para completar la compra por medio del correo.
+5 - Se podrá ver la info adicional de cada show(tarjeta flotante en el mismo main page).
+6 - chat directo para resolver dudas
+7 - seleccion de asientos
+
+
+BASE DE DATOS
+
+Entidad de Usuario:
+	id_user: Identificador único.
+	nombre: Nombre de usuario.
+	contraseña: Contraseña del usuario.
+
+Entidad de Administrador:
+	id_admin: Identificador único.
+	nombre: Nombre de usuario.
+	contraseña: Contraseña del usuario.
+
+Entidad de Evento:
+	id: Identificador único del evento.
+	titulo: Título del evento.
+	ciudad: Ciudad donde se llevará a cabo el evento.
+	categoria: Categoría del evento (por ejemplo, concierto, teatro, deportes, etc.).
+	descripcion: Descripción del evento.
+	fecha: Fecha del evento.
+	imagen: URL de la imagen del evento.
+	precio_entrada: Precio de entrada al evento.
+	capacidad: Capacidad de cada evento (Para poner el maximo de asientos a mostrar)
+
+Entidad de Asiento:
+	id: Identificador único del asiento.
+	fk_evento_id: Referencia al evento al que pertenece el asiento.
+	disponible: Indicador de disponibilidad del asiento (true/false).
+
+
+PROCESOS
+
+1 - Base de datos en clever
+2 - Entidades
+3 - Funciones necesarias en IService, service, controller, repository:
+	- ADMINISTRATOR:
+		- Login
+		- Agregar evento
+		- Modificar evento
+		- Eliminar evento
+	- EVENTS
+		- Listar todos los eventos
+		- Filtro adicional por ciudad y nombre (repository)
+		- Buscador por titulo (repository)
+		- Seleccion de asientos
+		- Paginacion 
+		- Mostrar info adicional en tarjeta flotante
+
+4 - Carrito de compras: 
+	JavaScript --> LocalStorage
+	- Un carrito donde se agrega cada ticket añadido
+	- Se puede eliminar, limpiar todo el carrito y añadir cantidades por tickets
+	- Mostrar pagina o tarjeta con info adicional del show
+
+5 - Formulario de confirmacion de compra con app externa "FormSpree"
+6 - Chat en vivo atencion al cliente con app externa (https://sendpulse.com/latam/features/live-chat)
+
+GITHUB NOMENCLATURA
+
+--> Features commits into development branch: | Feat: descripcion |
+
+Pull request: Cada uno revisa los pull request pendientes antes de hacer uno, Sera en orden numerico.
+
+El primero que empiece sera asi:
+ - #1 - Feat: Descripcion de la caracteristica
+
+REPOSITORIO
+
+TicketShow: https://github.com/JuanHiguita77/TicketShow.git
+
+  
+
+	

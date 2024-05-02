@@ -10,15 +10,15 @@ import com.riwi.APIEvents.entities.Event;
 //SEGURIDAD PARA EVITAR VER EL CODIGO INTERNO
 public interface IEventService 
 {
-    public Event save(Event product); 
+    public Event save(Event event); 
 
     public List<Event> getAll();
 
     public Event findById(String id);
 
-    public void delete(Event product);
+    public void delete(Event event);
 
-    public Event update(String id, Event product); 
+    public Event update(String id, Event event); 
 
     public Page<Event> findAllPaginate(int page, int size);
 }
