@@ -3,6 +3,7 @@ package com.riwi.BeautyCenter.api.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,13 +39,13 @@ public class ServiceController
     }
 
     @PostMapping("/add")
-    public ResponseEntity<ServiceResponse> save(@RequestBody ServiceRequest serviceRequest) {
+    public ResponseEntity<ServiceResponse> save(@Validated @RequestBody ServiceRequest serviceRequest) {
         
         return ResponseEntity.ok(this.iServiceService.insert(serviceRequest));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<ServiceResponse> update(@PathVariable Long id, @RequestBody ServiceRequest serviceRequest)
+    public ResponseEntity<ServiceResponse> update(@PathVariable Long id, @Validated @RequestBody ServiceRequest serviceRequest)
     {
         return ResponseEntity.ok(this.iServiceService.update(id, serviceRequest));
     }

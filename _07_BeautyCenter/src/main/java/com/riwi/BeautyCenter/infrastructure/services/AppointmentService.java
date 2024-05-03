@@ -4,6 +4,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.riwi.BeautyCenter.api.dto.request.AppointmentRequest;
 import com.riwi.BeautyCenter.api.dto.response.AppointmentResponse;
@@ -19,6 +20,7 @@ import com.riwi.BeautyCenter.domain.repositories.ClientRepository;
 import com.riwi.BeautyCenter.domain.repositories.EmployeeRepository;
 import com.riwi.BeautyCenter.domain.repositories.ServiceRepository;
 import com.riwi.BeautyCenter.infrastructure.abstract_services.IAppointmentService;
+import com.riwi.BeautyCenter.util.exceptions.IdNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -107,19 +109,23 @@ public class AppointmentService implements IAppointmentService{
         
         BeanUtils.copyProperties(request, appointment);
         
-        Client client = this.clientRepository.findById(request.getClient_id())
-                                             .orElseThrow(() -> new EntityNotFoundException("Client not found"));
+        Client client = this.find(request.getClient_id(), clientRepository, "client");
+                                            
         appointment.setClient(client);
         
-        Employee employee = this.employeeRepository.findById(request.getEmployee_id())
-                                                   .orElseThrow(() -> new EntityNotFoundException("Employee not found"));
+        Employee employee = this.find(request.getEmployee_id(), employeeRepository, "employee");
+                                                   
         appointment.setEmployee(employee);
         
-        Service service = this.serviceRepository.findById(request.getService_id())
-                                                 .orElseThrow(() -> new EntityNotFoundException("Service not found"));
+        Service service = this.find(request.getService_id(), serviceRepository, "service");
+                                                 
         appointment.setService(service);
         
         return appointment;
+    }
+
+    public <T> T find(Long id, JpaRepository<T, Long> repository, String entity) {
+        return repository.findById(id).orElseThrow(() -> new IdNotFoundException(entity));
     }
 
     public <T, R> R entityToResponseGeneric(T entity, Class<R> responseType) {

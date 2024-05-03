@@ -30,7 +30,7 @@ public class EventController
     
     @GetMapping
     //Un generico que devuelve una lista de genericos tipo productos
-    public ResponseEntity<Page<Event>> list(
+    public ResponseEntity<Page<EventResponse>> list(
         @RequestParam(defaultValue = "1") int page, 
         @RequestParam(defaultValue = "4") int size)
     {
@@ -39,7 +39,7 @@ public class EventController
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Event> add(@RequestBody Event event)
+    public ResponseEntity<EventResponse> add(@Validated @RequestBody EventRequest event)
     { 
         if (this.dateValidate(event) && event.getCapacity() > 0) 
         {
@@ -66,7 +66,7 @@ public class EventController
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Event> update(@PathVariable String id, @RequestBody Event event)
+    public ResponseEntity<EventResponse> update(@PathVariable String id, @Validated @RequestBody EventRequest event)
     {
         if(this.dateValidate(event) && event.getCapacity() > 0) return ResponseEntity.ok(this.IEventService.update(id, event));
 
@@ -74,7 +74,7 @@ public class EventController
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Event> findById(@PathVariable String id)
+    public ResponseEntity<EventResponse> findById(@PathVariable String id)
     {
         return ResponseEntity.ok(this.IEventService.findById(id));
     }
