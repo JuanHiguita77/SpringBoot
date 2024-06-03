@@ -25,7 +25,7 @@ public class VacantRequest
     private StateVacant status;
 
     //No pedimos una compañia completa, pedimos el id para identificar la que ya esta creada
-    @Size(max = 32, min = 0)
+    @Size(max = 36, min = 0)
     @NotBlank(message = "Company ID required")
     private String companyId;
 }

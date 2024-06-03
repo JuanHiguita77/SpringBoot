@@ -30,7 +30,7 @@ public class EventController
     
     @GetMapping
     //Un generico que devuelve una lista de genericos tipo productos
-    public ResponseEntity<Page<EventResponse>> list(
+    public ResponseEntity<Page<Event>> list(
         @RequestParam(defaultValue = "1") int page, 
         @RequestParam(defaultValue = "4") int size)
     {
@@ -39,7 +39,7 @@ public class EventController
     }
 
     @PostMapping("/add")
-    public ResponseEntity<EventResponse> add(@Validated @RequestBody EventRequest event)
+    public ResponseEntity<Event> add(@Validated @RequestBody Event event)
     { 
         if (this.dateValidate(event) && event.getCapacity() > 0) 
         {

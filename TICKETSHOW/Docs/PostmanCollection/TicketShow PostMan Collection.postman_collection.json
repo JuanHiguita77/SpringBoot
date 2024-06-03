@@ -1,0 +1,363 @@
+{
+	"info": {
+		"_postman_id": "935cb405-395d-4552-b701-027b762c8afb",
+		"name": "TicketShow PostMan Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29104128"
+	},
+	"item": [
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "ListAndSearch",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/events/auth/search",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"events",
+								"auth",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiQURNSU4iLCJpZCI6Mywic3ViIjoianVhbiBwZWRybyBjb3JyZWEiLCJpYXQiOjE3MTYwNzQzNTEsImV4cCI6MTcxNjE2MDc1MX0.kvVA0Vi8nrj_12T2AWyzxaVdL7FrKUBzG5Y1fwZaAo66zlhKth9C6sT5fZkvAWALamt0_fAKcArb8Lf8mdjuag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/events/auth/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"events",
+								"auth",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InsertEvent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"\r",
+									"pm.collectionVariables.set(\"id_event\", response.id);\r",
+									"console.log(\"id_saved -->\" +pm.collectionVariables.get(\"id_event\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiQURNSU4iLCJpZCI6Mywic3ViIjoianVhbiBwZWRybyBjb3JyZWEiLCJpYXQiOjE3MTYwNzQzNTEsImV4cCI6MTcxNjE2MDc1MX0.kvVA0Vi8nrj_12T2AWyzxaVdL7FrKUBzG5Y1fwZaAo66zlhKth9C6sT5fZkvAWALamt0_fAKcArb8Lf8mdjuag",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"tomorrowland 2\",\r\n    \"city\": \"medellin\",\r\n    \"category\": \"pop concert\",\r\n    \"description\": \"evento de musica\",\r\n    \"date\": \"2024-06-18T15:30:00\",\r\n    \"image_url\": \"image.png\",\r\n    \"price\": 22232,\r\n    \"capacity\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/events/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"events",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEvent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/events/delete/{{id_event}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"events",
+								"delete",
+								"{{id_event}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEvent",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"tomorrowland 2\",\r\n    \"city\": \"medellin\",\r\n    \"category\": \"pop concert\",\r\n    \"description\": \"evento de musica\",\r\n    \"date\": \"2024-05-18T15:30:00\",\r\n    \"image_url\": \"image.png\",\r\n    \"price\": 22232,\r\n    \"capacity\": 8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/events/update/{{id_event}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"events",
+								"update",
+								"{{id_event}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seats",
+			"item": [
+				{
+					"name": "SELECT SEATS",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[8]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/seat/selectSeat/{{id_event}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"seat",
+								"selectSeat",
+								"{{id_event}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Get Payload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiQURNSU4iLCJpZCI6Mywic3ViIjoianVhbiBwZWRybyBjb3JyZWEiLCJpYXQiOjE3MTYwODc2NTAsImV4cCI6MTcxNjE3NDA1MH0.qo_-3rxgG1tISSYmakO3TU9770Fc8u4f1RF-HCWyhQ3S4caAsVf0TNNGjyl-zPulDSEM-A-uWBJqXBSLmhQYNQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"name": "authorization",
+								"sortOrder": 0,
+								"infoTitle": "This header was automatically added",
+								"info": "This header is added because of the authorization method used for this request.\n\nThe value of this header is tentative. You can find the exact value in the console once the request is sent.\n\nUse the authorization tab to remove authorization or to change the value of this header.",
+								"allowedToToggle": false,
+								"disableEdit": true,
+								"previewSettingsLink": "Go to authorization",
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiQURNSU4iLCJpZCI6Mywic3ViIjoianVhbiBwZWRybyBjb3JyZWEiLCJpYXQiOjE3MTYwODc2NTAsImV4cCI6MTcxNjE3NDA1MH0.qo_-3rxgG1tISSYmakO3TU9770Fc8u4f1RF-HCWyhQ3S4caAsVf0TNNGjyl-zPulDSEM-A-uWBJqXBSLmhQYNQ",
+								"system": true,
+								"auth": true,
+								"type": "text",
+								"uuid": "17e66413-b6e2-477e-abdd-d84c0819193f"
+							},
+							{
+								"name": "cache-control",
+								"sortOrder": 2,
+								"infoTitle": "We recommend using this header",
+								"info": "Postman added \"Cache-Control: no-cache\" as a precautionary measure to prevent the server from returning stale response when one makes repeated requests.\n\nYou can remove this header in the app settings or enter a new one with a different value.",
+								"allowedToToggle": false,
+								"disableEdit": true,
+								"previewSettingsLink": "Go to settings",
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"system": true,
+								"type": "text",
+								"uuid": "dd966962-30cb-4ccb-91d4-c24c0b9d02ff"
+							},
+							{
+								"name": "postman-token",
+								"sortOrder": 3,
+								"infoTitle": "We recommend using this header",
+								"info": "The Postman-Token header appends a random UUID to every outgoing request. Postman adds this header for API developers to better debug requests sent and to ensure separate requests appear distinct to the receiving server.\n\nYou can remove this header in the app settings.",
+								"allowedToToggle": false,
+								"disableEdit": true,
+								"previewSettingsLink": "Go to settings",
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"system": true,
+								"type": "text",
+								"uuid": "851bc9c1-aee9-4337-9939-78aefa63570d"
+							},
+							{
+								"name": "host",
+								"sortOrder": 6,
+								"infoTitle": "We recommend using this header",
+								"info": "The Host header is added to identify the domain name for which a request is being sent to the server. This header is implicitly sent by every HTTP client.\n\nYou can remove the header or enter a new one with a different value. It is most likely that without this header, your request will return an HTTP 400 error.",
+								"allowedToToggle": true,
+								"disableEdit": true,
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"system": true,
+								"type": "text",
+								"uuid": "5acf1a65-166a-4228-bfa9-6e50cc688fae"
+							},
+							{
+								"name": "user-agent",
+								"sortOrder": 7,
+								"infoTitle": "We recommend using this header",
+								"info": "The User-Agent header is added to help the server identify Postman as the HTTP requesting application or client.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+								"allowedToToggle": true,
+								"disableEdit": true,
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.32.1",
+								"system": true,
+								"type": "text",
+								"uuid": "2dc4b3f3-dda0-4ba7-8af7-29468bc823e5"
+							},
+							{
+								"name": "accept",
+								"sortOrder": 8,
+								"infoTitle": "We recommend using this header",
+								"info": "The \"Accept: */*\" header is added to tell the server that Postman can understand and process all forms of response content types.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+								"allowedToToggle": true,
+								"disableEdit": true,
+								"key": "Accept",
+								"value": "*/*",
+								"system": true,
+								"type": "text",
+								"uuid": "0ccb8ada-36f4-42cb-b9c8-a8429dc61711"
+							},
+							{
+								"name": "accept-encoding",
+								"sortOrder": 9,
+								"infoTitle": "We recommend using this header",
+								"info": "The Accept-Encoding header is added to indicate to the server that Postman HTTP client supports a defined list of content-encoding or compression algorithms as response.\n\nYou can remove the header or enter a new one with a different value. Doing that may not accurately render the response within the app.",
+								"allowedToToggle": true,
+								"disableEdit": true,
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"system": true,
+								"type": "text",
+								"uuid": "d8ee6224-645d-4d40-9176-f217ae8bfff5"
+							},
+							{
+								"name": "connection",
+								"sortOrder": 10,
+								"infoTitle": "We recommend using this header",
+								"info": "Postman added the Connection header to indicate the server to keep the underlying network connection open once the current response is received. This allows Postman to reuse the same connection for faster response times in subsequent requests to the same server.\n\nYou can remove this header or enter a new one with a different value, such as `Connection: Close` to control this behaviour.",
+								"allowedToToggle": true,
+								"disableEdit": true,
+								"key": "Connection",
+								"value": "keep-alive",
+								"system": true,
+								"type": "text",
+								"uuid": "2842ed75-3d02-4900-b433-a0b11cd802d5"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiQURNSU4iLCJpZCI6Mywic3ViIjoianVhbiBwZWRybyBjb3JyZWEiLCJpYXQiOjE3MTYxMzgxMjAsImV4cCI6MTcxNjIyNDUyMH0.jfLuauVa4DleQQt3lRLxDyGq55pvVID6fBkcov4CWmtLez-kGhSxYHyPTCx3tGL-J0v6HoXYF9mEwjrobxzV5A",
+								"type": "text",
+								"id": 0,
+								"uuid": "17e66413-b6e2-477e-abdd-d84c0819193f"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/auth/payload",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"payload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:8080/api/v1"
+		},
+		{
+			"key": "id_event",
+			"value": ""
+		}
+	]
+}
