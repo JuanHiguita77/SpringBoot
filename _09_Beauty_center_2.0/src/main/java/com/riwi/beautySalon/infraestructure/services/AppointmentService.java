@@ -107,7 +107,7 @@ public class AppointmentService implements IAppointmentService {
                 .orElseThrow(() -> new BadRequestException("No servicios clientes con el id suministrado"));
 
         if (this.isEmployeeAvailable(request.getEmployeeId(), request.getDateTime()) != 0) {
-            throw new BadRequestException("EL empleado no esta displonible en este fecha");
+            throw new BadRequestException("EL empleado no esta displonible en esta fecha");
         }
 
         appointment = this.requestToEntity(request);

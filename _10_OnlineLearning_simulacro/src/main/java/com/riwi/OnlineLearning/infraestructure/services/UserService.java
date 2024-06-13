@@ -72,7 +72,7 @@ public class UserService implements IUserService {
         User user = this.find(id);
         user = this.requestToEntity(request);
         user.setId(id);
-
+        
         return this.entityToResp(this.userRepository.save(user));
     }
 

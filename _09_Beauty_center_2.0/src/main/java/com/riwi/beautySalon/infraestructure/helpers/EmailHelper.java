@@ -6,11 +6,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
+
+import com.riwi.beautySalon.api.dto.errors.ErrorsResp;
 
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -23,7 +28,9 @@ public class EmailHelper
     private final JavaMailSender mailSender;
 
 
-    //Enviar el email
+    //Enviar el email = caso normal se deberia devolver un void, ya que la respuesta la da el metodo que use este helper y noo un controlador directamente para esto como si fuera un servicio
+
+    //Se devolveria un Sout("message") para que el programmer vea el error
     public ResponseEntity<String> sendMail(String destinity, String nameClient, String nameEmployee, LocalDateTime date) {
         MimeMessage message = mailSender.createMimeMessage(); // Se usa cuando es mensaje html
     
@@ -41,14 +48,40 @@ public class EmailHelper
             mailSender.send(message);
             return ResponseEntity.ok("Email sent successfully"); // Indica que el correo se envió correctamente
         } catch (Exception e) {
-            ErrorResponse errorResponse = new ErrorResponse(
-            "An unexpected error occurred", 
-            e.getMessage(), 
-            HttpStatus.INTERNAL_SERVER_ERROR.value());
+                ErrorsResp errorResponse = ErrorsResp.builder()
+                .status("error")
+                .code(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .errors(Collections.singletonList(Collections.singletonMap("message", e.getMessage())))
+                .build();
             
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse.toString());
         }
     }
+
+    //Ejemplo con Void
+    /*public void sendMail(String destinity, String nameClient, String nameEmployee, LocalDateTime date){
+        MimeMessage message = mailSender.createMimeMessage();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        String dateAppointment = date.format(formatter);
+        String htmlContent = this.readHTMLTemplate(nameClient, nameEmployee, dateAppointment);
+
+        try {
+            message.setFrom(new InternetAddress("kwmejia9@gmail.com"));
+            message.setSubject("Confirmación de cita en Beauty Salon");
+
+            message.setRecipients(MimeMessage.RecipientType.TO,destinity);
+            message.setContent(htmlContent,MediaType.TEXT_HTML_VALUE);
+
+            mailSender.send(message);
+            System.out.println("Email enviado");
+
+        } catch (Exception e) {
+            System.out.println("ERROR no se pudo enviar el email " + e.getMessage());
+
+        }
+    } */
 
     //Leer y remplazar palabras html
     private String readHTMLTemplate(String nameClient, String employeeName, String date)
