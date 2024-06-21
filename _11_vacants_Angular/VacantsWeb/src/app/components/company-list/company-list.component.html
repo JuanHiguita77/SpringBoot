@@ -1,0 +1,66 @@
+<div class="container my-5">
+    <h1 class="mb-4 text-center">ALL AVAILABLE COMPANIES</h1>
+
+    <div class="d-flex">
+        <button class="btn btn-info mx-auto my-3 fw-bold" routerLink = "/newCompany">CREATE NEW COMPANY</button>
+    </div>
+
+    <div class="d-flex">
+        <button class="btn btn-success mx-auto my-3 fw-bold" routerLink = "vacants">SHOW ALL VACANTS</button>
+    </div>
+    
+    <table class="table table-striped table-hover">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>NAME</th>
+                <th>LOCATION</th>
+                <th>CONTACT</th>
+                <th>VACANTS</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <!-- Ejemplo de datos de compañía -->
+            @for (company of companies; track company.id) 
+            {
+                <tr>
+                    <td>{{ company.name }}</td>
+                    <td>{{ company.location }}</td>
+                    <td>{{ company.contact }}</td>
+                    <td>
+                        <table class="table table-bordered table-sm mb-0">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>TITLE</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (vacant of company.vacants; track vacant.id) {
+                                    <tr>
+                                        <td>{{ vacant.id }}</td>
+                                        <td>{{ vacant.title }}</td>
+                                        <td>{{ vacant.description }}</td>
+                                        <td>{{ vacant.status }}</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </td>
+                    <div class="d-flex flex-column">
+                        <button class="btn btn-outline-success fw-bold my-2" [routerLink]="[company.id, 'edit']">EDIT</button>
+                        <button class="btn btn-outline-danger fw-bold my-2" (click)="deleteCompany(company.id)">DELETE</button>
+                    </div>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Paginación -->
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-secondary" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+        <button class="btn btn-secondary" (click)="nextPage()" [disabled]="currentPage >= totalPages">Next</button>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="container mt-5 d-flex flex-column text-center w-75">
+    <h1 class="fw-bold">
+        {{ company ? "EDIT COMPANY" : "NEW COMPANY" }}
+    </h1>
+    @if(form)
+    {
+        @if(errors.length) 
+        {
+            <div class="alert alert-danger ">
+                <ul>
+                    @for (error of errors; track error) 
+                    {
+                        <li>{{ error }}</li>  
+                    }
+                </ul>
+            </div>
+        }
+
+        <form class="my-5" [formGroup]="form" (ngSubmit)="save()">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name: </label>
+              <input type="text" class="form-control" id="name" name="name" formControlName="name" required>
+
+              @if(form.get('name')?.hasError('required') && form.get('name')?.touched)
+              {
+                  <h4 class="invalid-feedback d-block"> Name required </h4>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="location" class="form-label">Location city: </label>
+              <input type="text" class="form-control" id="location" name="location" formControlName="location" required>
+
+              @if(form.get('location')?.hasError('required') && form.get('location')?.touched)
+              {
+                  <h4 class="invalid-feedback d-block"> Location required </h4>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label for="contact" class="form-label">Contact: </label>
+              <input type="text" class="form-control" id="contact" name="contact" formControlName="contact" required>
+
+              @if(form.get('contact')?.hasError('required') && form.get('contact')?.touched)
+              {
+                  <h4 class="invalid-feedback d-block"> Contact required </h4>
+              }
+            </div>
+            <div class="d-flex justify-content-around">
+              <button class="btn btn-danger w-25 text-black fw-bold" routerLink="">CANCEL</button>
+              <button type="submit" class="btn btn-info w-25 fw-bold">
+                {{ company ? 'EDIT' : 'ADD' }}
+              </button>
+            </div>
+          </form>
+    }
+</div>

@@ -1,0 +1,42 @@
+<div class="container my-5">
+    <h1 class="mb-4 text-center">ALL AVAILABLE VACANTS</h1>
+
+    <div class="d-flex">
+        <button class="btn btn-success mx-auto my-3 fw-bold" routerLink = "">GO TO MAIN</button>
+
+        <button class="btn btn-info mx-auto my-3 fw-bold" routerLink = "/newVacant">CREATE NEW VACANT</button>
+    </div>
+    
+    <table class="table table-striped table-hover">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>NAME</th>
+                <th>DESCRIPTION</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <!-- Ejemplo de datos de compañía -->
+            @for (vacant of vacants; track vacant.id) 
+            {
+                <tr>
+                    <td>{{ vacant.title }}</td>
+                    <td>{{ vacant.description }}</td>
+                    <td>{{ vacant.status }}</td>
+                    
+                    <div class="d-flex flex-column">
+                        <button class="btn btn-outline-success fw-bold my-2" [routerLink]="[vacant.id, 'editVacant']">EDIT</button>
+                        <button class="btn btn-outline-danger fw-bold my-2" (click)="deleteVacant(vacant.id)">DELETE</button>
+                    </div>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Paginación -->
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-secondary" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+        <button class="btn btn-secondary" (click)="nextPage()" [disabled]="currentPage >= totalPages">Next</button>
+    </div>
+</div>
