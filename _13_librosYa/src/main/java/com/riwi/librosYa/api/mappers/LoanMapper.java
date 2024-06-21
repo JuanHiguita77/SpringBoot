@@ -17,7 +17,7 @@ public interface LoanMapper
     @InheritInverseConfiguration
     Loan toEntity(DTOLoan dtoLoan);
 
-    List<DTOLoan> toDTOLoanList(List<Loan> loanList);
+    List<DTOLoan> toDTOLoanList(List<Loan> loanList);   
 
     List<Loan> toEntityList(List<DTOLoan> dtoLoanList);
 }
