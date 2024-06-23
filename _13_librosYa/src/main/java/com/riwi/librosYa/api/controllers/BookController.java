@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,6 @@ import com.riwi.librosYa.api.dto.DTOBook;
 import com.riwi.librosYa.infraestructure.abstract_Services.IBookService;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 
@@ -38,17 +38,17 @@ public class BookController {
         return ResponseEntity.ok(this.bookService.create(book));
     }
 
-    @Operation(summary = "Delete a book by id", description = "Send the book id to delete it")
-    @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
-        this.bookService.delete(id);
+    @Operation(summary = "Delete a book by book_id", description = "Send the book book_id to delete it")
+    @DeleteMapping(path = "/{book_id}")
+    public ResponseEntity<Void> delete(@PathVariable Long book_id){
+        this.bookService.delete(book_id);
         return ResponseEntity.noContent().build();
     }
 
     @Operation(summary = "Update a book", description = "Send information to update a book")
-    @PutMapping(path = "/{id}")
-    public ResponseEntity<DTOBook> update(@PathVariable Long id, @Validated @RequestBody DTOBook book) {
-        return ResponseEntity.ok(this.bookService.update(book, id));
+    @PutMapping(path = "/{book_id}")
+    public ResponseEntity<DTOBook> update(@PathVariable Long book_id, @Validated @RequestBody DTOBook book) {
+        return ResponseEntity.ok(this.bookService.update(book, book_id));
     }
 
     @Operation(summary = "Get all books", description = "Get all books with pagination and sorting")
@@ -64,9 +64,9 @@ public class BookController {
         return this.bookService.searchBook(title, author, genre, pageable);
     }
 
-    @Operation(summary = "Get a book by id", description = "Send the book id to get book details")
-    @GetMapping("/{id}")
-    public ResponseEntity<DTOBook> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(this.bookService.get(id));
+    @Operation(summary = "Get a book by book_id", description = "Send the book book_id to get book details")
+    @GetMapping("/{book_id}")
+    public ResponseEntity<DTOBook> findById(@PathVariable Long book_id) {
+        return ResponseEntity.ok(this.bookService.get(book_id));
     }
 }

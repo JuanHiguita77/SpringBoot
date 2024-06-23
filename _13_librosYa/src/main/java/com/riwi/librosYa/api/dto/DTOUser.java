@@ -17,6 +17,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DTOUser {
 
+    private long id;
+    
     @NotBlank
     @Size(min = 1, max = 50)
     @Schema(description = "Username", example = "john_doe")

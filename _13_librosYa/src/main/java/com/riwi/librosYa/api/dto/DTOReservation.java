@@ -18,6 +18,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DTOReservation {
     
+    private long id;
+    
     @NotNull
     @Schema(description = "Reservation date")
     private LocalDate reservationDate;

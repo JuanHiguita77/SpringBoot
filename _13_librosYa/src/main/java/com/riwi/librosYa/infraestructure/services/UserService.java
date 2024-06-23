@@ -14,40 +14,37 @@ import com.riwi.librosYa.util.enums.SortType;
 import com.riwi.librosYa.util.exceptions.BadRequestException;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
 public class UserService implements IUserService
 {
     @Autowired
     private UserRepository userRepository;
 
-    private UserMapper getMapper() {
-        return Mappers.getMapper(UserMapper.class);
-    }
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public DTOUser create(DTOUser request) {
-        User userEntity = getMapper().toEntity(request);
-        return getMapper().toDTOUser(userRepository.save(userEntity));
+        User userEntity = userMapper.toEntity(request);
+        return userMapper.toDTOUser(userRepository.save(userEntity));
     }
 
     @Override
     public DTOUser get(Long id) {
         User userEntity = this.find(id);
-        return getMapper().toDTOUser(userEntity);
+        return userMapper.toDTOUser(userEntity);
     }
 
     @Override
     public DTOUser update(DTOUser request, Long id) {
         User existingEntity = this.find(id);
 
-        User updatedEntity = getMapper().toEntity(request);
+        User updatedEntity = userMapper.toEntity(request);
         updatedEntity.setId(existingEntity.getId());
 
-        return getMapper().toDTOUser(userRepository.save(updatedEntity));
+        return userMapper.toDTOUser(userRepository.save(updatedEntity));
 
     }
 

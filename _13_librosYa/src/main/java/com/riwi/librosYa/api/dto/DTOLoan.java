@@ -16,6 +16,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DTOLoan {
+
+    private long id;
+    
     @NotNull
     @Schema(description = "Loan date")
     private LocalDate loanDate;

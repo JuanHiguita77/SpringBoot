@@ -17,6 +17,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DTOBook {
     
+    private long id;
+
     @NotBlank
     @Size(min = 1, max = 100)
     @Schema(description = "Book title", example = "Spring Boot in Action")
