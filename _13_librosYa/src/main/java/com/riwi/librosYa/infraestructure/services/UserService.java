@@ -1,6 +1,5 @@
 package com.riwi.librosYa.infraestructure.services;
 
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -41,10 +40,10 @@ public class UserService implements IUserService
     public DTOUser update(DTOUser request, Long id) {
         User existingEntity = this.find(id);
 
-        User updatedEntity = userMapper.toEntity(request);
-        updatedEntity.setId(existingEntity.getId());
+        existingEntity = userMapper.toEntity(request);
+        existingEntity.setId(existingEntity.getId());
 
-        return userMapper.toDTOUser(userRepository.save(updatedEntity));
+        return userMapper.toDTOUser(userRepository.save(existingEntity));
 
     }
 

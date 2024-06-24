@@ -15,16 +15,16 @@ import com.riwi.librosYa.domain.entities.User;
 public interface UserMapper 
 {
     @Mappings({
-        @Mapping(target = "reservations", source = "reservations"),
-        @Mapping(target = "loans", source = "loans"),
+        /*@Mapping(target = "reservations", source = "reservations"),
+        @Mapping(target = "loans", source = "loans"),*/
         @Mapping(target = "password", ignore = true)
     })
     DTOUser toDTOUser(User user);
 
-    @InheritInverseConfiguration(name = "toDTOUser")
+    @InheritInverseConfiguration
     User toEntity(DTOUser dtoUser);
 
-    List<DTOUser> toDTOUserList(List<User> userList);
+    /*List<DTOUser> toDTOUserList(List<User> userList);
 
-    List<User> toEntityList(List<DTOUser> dtoUserList);
+    List<User> toEntityList(List<DTOUser> dtoUserList);*/
 }
