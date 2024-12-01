@@ -1,0 +1,31 @@
+services:
+  classes: 
+    image: "juanhiguita/librosya"
+    container_name: libroscontainer 
+    ports:
+      - "8080:8080"
+    deploy: 
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - containerNetwork
+  mysql: 
+    image: "mysql:latest"
+    container_name: mysql 
+    ports:
+      - "3307:3306"
+    environment:  
+      MYSQL_ROOT_PASSWORD: root  # Define una contraseña para el usuario root
+      MYSQL_DATABASE: librosya  # Nombre de la base de datos que se va a crear
+      MYSQL_USER: user  # Opcional: crea un usuario adicional
+      MYSQL_PASSWORD: user  # Opcional: define la contraseña para el usuario adicional
+    deploy: 
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - containerNetwork
+networks:
+  containerNetwork:
+    driver: "bridge"

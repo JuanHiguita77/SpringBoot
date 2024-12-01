@@ -1,5 +1,8 @@
 package com.riwi.librosYa.api.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.riwi.librosYa.api.dto.DTOBook;
 import com.riwi.librosYa.infraestructure.abstract_Services.IBookService;
 
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 
@@ -29,44 +31,55 @@ import lombok.AllArgsConstructor;
 @Tag(name = "Books")
 public class BookController {
 
+    private static final Logger logger = LoggerFactory.getLogger(BookController.class);
+
     @Autowired
     private final IBookService bookService;
 
-    @Operation(summary = "Create a new book", description = "Send information to create a new book")
     @PostMapping
     public ResponseEntity<DTOBook> save(@Validated @RequestBody DTOBook book) {
-        return ResponseEntity.ok(this.bookService.create(book));
+        logger.info("Creating a new book: {}", book);
+        DTOBook createdBook = this.bookService.create(book);
+        logger.info("Book created successfully with ID: {}", createdBook.getId());
+        return ResponseEntity.ok(createdBook);
     }
 
-    @Operation(summary = "Delete a book by book_id", description = "Send the book book_id to delete it")
     @DeleteMapping(path = "/{book_id}")
-    public ResponseEntity<Void> delete(@PathVariable Long book_id){
+    public ResponseEntity<Void> delete(@PathVariable Long book_id) {
+        logger.info("Request received to delete book with ID: {}", book_id);
         this.bookService.delete(book_id);
+        logger.info("Book deleted successfully");
         return ResponseEntity.noContent().build();
     }
 
-    @Operation(summary = "Update a book", description = "Send information to update a book")
     @PutMapping(path = "/{book_id}")
     public ResponseEntity<DTOBook> update(@PathVariable Long book_id, @Validated @RequestBody DTOBook book) {
-        return ResponseEntity.ok(this.bookService.update(book, book_id));
+        logger.info("Updating book with ID: {}", book_id);
+        DTOBook updatedBook = this.bookService.update(book, book_id);
+        logger.info("Book updated successfully: {}", updatedBook);
+        return ResponseEntity.ok(updatedBook);
     }
 
-    @Operation(summary = "Get all books", description = "Get all books with pagination")
     @GetMapping
     public ResponseEntity<Page<DTOBook>> getAllBooks(
             @RequestParam(value = "title", defaultValue = "", required = false) String title,
             @RequestParam(value = "author", defaultValue = "", required = false) String author,
             @RequestParam(value = "genre", defaultValue = "", required = false) String genre,
             @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "size", defaultValue = "5") int size)
-        {
+            @RequestParam(value = "size", defaultValue = "5") int size) {
+        logger.info("Fetching books with filters: title={}, author={}, genre={}, page={}, size={}",
+                title, author, genre, page, size);
         Pageable pageable = PageRequest.of(page - 1, size);
-        return ResponseEntity.ok(this.bookService.searchBook(title, author, genre, pageable));
+        Page<DTOBook> books = this.bookService.searchBook(title, author, genre, pageable);
+        logger.info("Fetched {} books", books.getTotalElements());
+        return ResponseEntity.ok(books);
     }
 
-    @Operation(summary = "Get a book by book_id", description = "Send the book book_id to get book details")
     @GetMapping("/{book_id}")
     public ResponseEntity<DTOBook> findById(@PathVariable Long book_id) {
-        return ResponseEntity.ok(this.bookService.get(book_id));
+        logger.info("Fetching book with ID: {}", book_id);
+        DTOBook book = this.bookService.get(book_id);
+        logger.info("Book details: {}", book);
+        return ResponseEntity.ok(book);
     }
 }

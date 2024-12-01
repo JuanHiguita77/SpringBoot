@@ -1,0 +1,26 @@
+services:
+  classes: 
+    image: "juanhiguita/librosya"
+    container_name: libroscontainer 
+    ports:
+      - "8080:8080"
+    deploy: 
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - containerNetwork
+  mysql: 
+    image: "mysql:latest"
+    container_name: mysql 
+    ports:
+      - "3307:3307"
+    deploy: 
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - containerNetwork
+networks:
+  containerNetwork:
+    driver: "bridge"

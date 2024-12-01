@@ -1,0 +1,33 @@
+type Query {
+    getAllBooks(title: String, author: String, genre: String, isbn: Int, publicationYear: Int, page: Int, size: Int): BookPage
+    findBookById(book_id: ID): Book
+}
+
+type Mutation {
+    createBook(book: BookInput): Book
+    updateBook(book_id: ID book: BookInput): Book
+    deleteBook(book_id: ID): Boolean
+}
+
+type Book {
+    id: ID
+    title: String
+    author: String
+    genre: String
+    isbn: Int
+    publicationYear: Int
+}
+
+type BookPage {
+    content: [Book]
+    totalElements: Int
+    totalPages: Int
+}
+
+input BookInput {
+    title: String
+    author: String
+    genre: String
+    isbn: Int
+    publicationYear: Int
+}

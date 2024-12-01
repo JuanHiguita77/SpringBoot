@@ -38,7 +38,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter
 
         if (token == null) 
         {
-            filterChain.doFilter(request, response);//filtros propios de security
+            filterChain.doFilter(request, response);//filtros propios de security para lanzar una excepcion
 
             return;
         }
@@ -49,15 +49,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter
         //Si no lo encuentra en el contexto de spring Security
         if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) 
         {
-            //Obtener usuario por username a partir del repositorio
+            //Obtener usuario por username
             UserDetails userDetails = userdetailsService.loadUserByUsername(userName);
 
             if(this.jwtService.isTokenValid(token, userDetails))
             {
-                //Toma el tipo de dato que usando var
+                //Toma el tipo de dato que es usando var
                var authToken = new UsernamePasswordAuthenticationToken(userName, null, userDetails.getAuthorities());
 
-               //Establece detalles adicionales como la ip, ubicacion con la ip
+               //Establece detalles adicionales como la ip, ubicacion con la ip(remote address)
                authToken.setDetails(new WebAuthenticationDetails(request));
 
                //Registra el token de autenticacion para el tiempo que dure la solicitud del usuario(osea lo que dure el proceso de los filtros)

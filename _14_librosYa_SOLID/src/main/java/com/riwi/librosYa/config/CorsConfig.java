@@ -13,7 +13,7 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("*"); // Permitir solicitudes desde el frontend
+        config.addAllowedOrigin("http://localhost:5173"); // Permitir solicitudes desde el frontend
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
 
