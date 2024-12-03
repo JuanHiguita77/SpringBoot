@@ -1,0 +1,35 @@
+type Product {
+    id: ID
+    name: String
+    category: String
+    price: Float
+    stock: Int
+}
+
+input ProductInput {
+    name: String!
+    category: String!
+    price: Float!
+    stock: Int!
+}
+
+type ProductPage {
+    content: [Product]
+    totalElements: Int
+    totalPages: Int
+}
+
+type Query {
+    getAll(page: Int, size: Int): ProductPage
+    getProductsByCategory(category: String, page: Int, size: Int): ProductPage
+    getById(id: ID):Product
+}
+
+type Mutation {
+    create(request: ProductInput): Product
+    update(request: ProductInput): Product
+    updateStock(stock: Int, id: ID): Product
+    receiveNewShipment(newStock: Int, id: ID): Product
+    delete(id: ID): Boolean
+}
+
