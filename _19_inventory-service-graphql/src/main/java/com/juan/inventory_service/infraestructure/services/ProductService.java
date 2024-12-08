@@ -41,8 +41,6 @@ public class ProductService implements IProductService {
     public Page<ProductDTO> getProductsByCategory(String category, Pageable pageable) {
         Page<Product> products = productRepository.getProductsByCategory(category, pageable);
 
-        System.out.println("Products fetched: " + products.getContent());
-
         
         return products.map(product -> ProductDTO.builder()
             .name(product.getName())
@@ -50,6 +48,17 @@ public class ProductService implements IProductService {
             .price(product.getPrice())
             .stock(product.getStock())
             .build());
+    }
+
+    @Override
+    public ProductDTO getById(Long id) {
+        return productRepository.findById(id).map(product -> ProductDTO.builder()
+            .id(product.getId())
+            .name(product.getName())
+            .category(product.getCategory())
+            .price(product.getPrice())
+            .stock(product.getStock())
+            .build()).orElseThrow(() -> new RuntimeException("Product not found!"));
     }
 
     //MUTATIONS
@@ -91,16 +100,6 @@ public class ProductService implements IProductService {
                         .build();
     }
 
-    @Override
-    public ProductDTO getById(Long id) {
-        return productRepository.findById(id).map(product -> ProductDTO.builder()
-            .id(product.getId())
-            .name(product.getName())
-            .category(product.getCategory())
-            .price(product.getPrice())
-            .stock(product.getStock())
-            .build()).orElseThrow(() -> new RuntimeException("Product not found!"));
-    }
 
     @Override
     public ProductDTO create(ProductDTO request) {
@@ -147,7 +146,7 @@ public class ProductService implements IProductService {
     @Override
     public void delete(Long id) {
         if (!productRepository.existsById(id)) {
-            throw new IllegalArgumentException("El producto con ID " + id + " no existe.");
+            throw new IllegalArgumentException("Product with " + id + " dont exist.");
         }
         productRepository.deleteById(id);
     }

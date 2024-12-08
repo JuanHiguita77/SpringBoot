@@ -1,0 +1,74 @@
+# Directives
+directive @NotBlank(message: String = "Name is obligatory") on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+# Define principal types
+type BrandDTO {
+    id: ID
+    name: String!
+    country: Country!
+    models: [ModelDTO!]
+}
+
+type ModelDTO {
+    id: ID
+    name: String!
+    brand: BrandDTO
+}
+
+# Enum para el país
+enum Country {
+    GER 
+    ENG 
+    ES 
+    JAP
+}
+
+# Paginación
+type BrandPage {
+    content: [BrandDTO!]!
+    totalElements: Int!
+    totalPages: Int!
+}
+
+type ModelPage {
+    content: [ModelDTO!]!
+    totalElements: Int!
+    totalPages: Int!
+}
+
+# Inputs para las operaciones de creación/actualización
+input BrandInput {
+    name: String! @NotBlank
+    country: Country!
+}
+
+input ModelInput {
+    name: String! @NotBlank
+    brandId: ID!
+}
+
+# Queries para obtener información
+type Query {
+    getAllBrands(page: Int!, size: Int!): BrandPage!
+    getAllModels(page: Int!, size: Int!): ModelPage!
+    getBrandById(id: ID!): BrandDTO
+    getModelById(id: ID!): ModelDTO
+}
+
+# Mutations para crear, actualizar y eliminar
+type Mutation {
+    createBrand(request: BrandInput!): BrandDTO!
+    updateBrand(id: ID!, request: BrandInput!): BrandDTO!
+    deleteBrand(id: ID!): Boolean!
+
+    createModel(request: ModelInput!): ModelDTO!
+    updateModel(id: ID!, request: ModelInput!): ModelDTO!
+    deleteModel(id: ID!): Boolean!
+}
+
+type Subscription{
+    getAllBrandsFlux: BrandDTO
+    getMonoBrandFlux(id: ID!): BrandDTO
+}
+
+
