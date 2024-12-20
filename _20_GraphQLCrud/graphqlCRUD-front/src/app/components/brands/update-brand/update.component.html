@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Update Brand</h2>
+    <form novalidate #f="ngForm" (ngSubmit)="onUpdate()">
+      <!-- Nombre -->
+      <div class="mb-3">
+        <label for="name" class="form-label">New Brand Name</label>
+        <input 
+          type="text" 
+          id="name" 
+          class="form-control" 
+          name="name"
+          placeholder="Enter brand name"
+          [(ngModel)]="name" required>
+      </div>
+  
+      <!-- País -->
+      <div class="mb-3">
+        <label for="country" class="form-label">New Country</label>
+        <select 
+          id="country" 
+          class="form-select"
+          name="country"
+          [(ngModel)]="selectedCountry">
+          <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+        </select>
+      </div>
+  
+      <!-- Botón -->
+      <div class="d-flex align-items-center flex-column">
+          <button type="submit" class="btn btn-outline-primary w-75" [disabled]="f.invalid">Update Brand</button>
+          <button type="submit" class="btn btn-outline-danger my-3 w-75" routerLink="/">GO BACK <--</button>
+        </div>
+    </form>
+</div>
+  
