@@ -1,15 +1,15 @@
 package com.juan.Bingo_Project.infraestructure.mappers;
 
-import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants;
 
 import com.juan.Bingo_Project.api.dto.UserDTO;
 import com.juan.Bingo_Project.domain.entities.UserEntity;
 
-@Mapper(componentModel = "spring", builder = @Builder(disableBuilder = false))
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface UserMapper {
 
-    UserDTO userToUserDTO(UserEntity user);
+    UserDTO UserEntityToUserDTO(UserEntity user);
 
-    UserEntity userDTOToUser(UserDTO userDTO);
+    UserEntity UserDTOToUserEntity(UserDTO userDTO);
 }

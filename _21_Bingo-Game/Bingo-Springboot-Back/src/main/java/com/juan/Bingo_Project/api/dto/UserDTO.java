@@ -1,23 +1,17 @@
 package com.juan.Bingo_Project.api.dto;
 
-import com.juan.Bingo_Project.util.enums.USER;
+import com.juan.Bingo_Project.util.enums.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 public class UserDTO {
 
     private String userName;
     private String password;
-    private USER userType;
+    private Role role;
 }
