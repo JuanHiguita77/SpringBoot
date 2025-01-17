@@ -1,10 +1,12 @@
 package com.riwi.APIEvents.controller;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -66,7 +68,7 @@ public class EventController
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<EventResponse> update(@PathVariable String id, @Validated @RequestBody EventRequest event)
+    public ResponseEntity<Event> update(@PathVariable String id, @Validated @RequestBody Event event)
     {
         if(this.dateValidate(event) && event.getCapacity() > 0) return ResponseEntity.ok(this.IEventService.update(id, event));
 
@@ -74,17 +76,17 @@ public class EventController
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EventResponse> findById(@PathVariable String id)
+    public ResponseEntity<Event> findById(@PathVariable String id)
     {
         return ResponseEntity.ok(this.IEventService.findById(id));
     }
 
     public boolean dateValidate(Event event)
     {
-        Date insertDate = event.getDate_event();
-        Date actualDate = new Date(); 
+        LocalDate insertDate = event.getDate_event();
+        LocalDate actualDate = LocalDate.now(); 
 
-        if (insertDate.before(actualDate)) return false;
+        if (insertDate.isBefore(actualDate)) return false;
  
         return true;
     }

@@ -27,6 +27,7 @@ public class EventService implements IEventService
         return this.eventRepository.findAll();
     }
 
+    @Override
     public Page<Event> findAllPaginate(int page, int size)
     {
         //Validar que no sea menor a cero

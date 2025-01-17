@@ -1,6 +1,8 @@
 package com.riwi.APIEvents.entities;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +22,7 @@ public class Event
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String name;
-    private Date date_event;
+    private LocalDate date_event;
     private String ubication;
     private int capacity;
     
