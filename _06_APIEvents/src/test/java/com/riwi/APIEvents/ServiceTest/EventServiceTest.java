@@ -2,6 +2,8 @@ package com.riwi.APIEvents.ServiceTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -9,6 +11,8 @@ import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -151,4 +155,88 @@ public class EventServiceTest {
         Mockito.verify(eventRepository, Mockito.times(1)).save(event);
     }
 
+    @Test
+    void testDeleteValidEvent() {
+        // Arrange
+        Event event = new Event("1", "Sample Event", LocalDate.now(), "Sample Location", 100);
+
+        // No es necesario configurar el mock para delete, ya que no devuelve un resultado.
+
+        // Act
+        eventService.delete(event);
+
+        // Assert
+        // Verifica que el método delete del repositorio fue llamado con el evento correcto.
+        Mockito.verify(eventRepository, Mockito.times(1)).delete(event);
+    }
+
+    @Test
+    void testFindByIdValidId() {
+        // Arrange
+        String id = "1";
+        Event event = new Event(id, "Sample Event", LocalDate.now(), "Sample Location", 100);
+
+        Mockito.when(eventRepository.findById(id)).thenReturn(Optional.of(event));
+
+        // Act
+        Event result = eventService.findById(id);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals("Sample Event", result.getName());
+        Mockito.verify(eventRepository, Mockito.times(1)).findById(id);
+    }
+
+    @Test
+    void testFindByIdInvalidId() {
+        // Arrange
+        String id = "999";
+        Mockito.when(eventRepository.findById(id)).thenReturn(Optional.empty());
+
+        // Act
+        Event result = eventService.findById(id);
+
+        // Assert
+        assertNull(result);
+        Mockito.verify(eventRepository, Mockito.times(1)).findById(id);
+    }
+
+    @Test
+    void testUpdateValidId() {
+        // Arrange
+        String id = "1";
+        Event existingEvent = new Event(id, "Old Event", LocalDate.now(), "Old Location", 100);
+        Event updatedEvent = new Event(null, "Updated Event", LocalDate.now().plusDays(1), "Updated Location", 200);
+
+        Mockito.when(eventRepository.findById(id)).thenReturn(Optional.of(existingEvent));
+
+        //Devolver el evento actualizado del repo
+        Mockito.when(eventRepository.save(Mockito.any(Event.class))).thenAnswer(invocation -> invocation.getArgument(0));
+
+        // Act
+        Event result = eventService.update(id, updatedEvent);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(id, result.getId());
+        assertEquals("Updated Event", result.getName());
+        assertEquals("Updated Location", result.getUbication());
+        Mockito.verify(eventRepository, Mockito.times(1)).findById(id);
+        Mockito.verify(eventRepository, Mockito.times(1)).save(updatedEvent);
+    }
+
+    @Test
+    void testUpdateInvalidId() {
+        // Arrange
+        String id = "999";
+        Event updatedEvent = new Event(null, "Updated Event", LocalDate.now().plusDays(1), "Updated Location", 200);
+
+        Mockito.when(eventRepository.findById(id)).thenReturn(Optional.empty());
+
+        // Act & Assert
+        assertThrows(NoSuchElementException.class, () -> eventService.update(id, updatedEvent));
+        Mockito.verify(eventRepository, Mockito.times(1)).findById(id);
+        //Verifica que el repositorio no se haya llamado
+        Mockito.verify(eventRepository, Mockito.never()).save(Mockito.any(Event.class));
+    }
 }
