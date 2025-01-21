@@ -44,7 +44,7 @@ public class AppointmentService implements IAppointmentService{
     @Override
     public AppointmentResponse findById(Long id) 
     {
-        return this.entityToResponse(this.appointmentRepository.findById(id).orElse(null));
+        return this.entityToResponse(this.appointmentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Appointment not found with id: " + id)));
     }
 
     @Override
