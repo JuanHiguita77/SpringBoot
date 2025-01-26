@@ -16,6 +16,7 @@ import com.riwi.BeautyCenter.domain.entities.Appointment;
 import com.riwi.BeautyCenter.domain.entities.Client;
 import com.riwi.BeautyCenter.domain.repositories.ClientRepository;
 import com.riwi.BeautyCenter.infrastructure.abstract_services.IClientService;
+import com.riwi.BeautyCenter.util.exceptions.IdNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -29,7 +30,7 @@ public class ClientService implements IClientService{
 
     @Override
     public ClientResponse findById(Long id) {
-        return this.entityToResponse(this.clientRepository.findById(id).orElse(null));
+        return this.entityToResponse(this.clientRepository.findById(id).orElseThrow(() -> new IdNotFoundException(Client.class.getSimpleName())));
     }
 
     @Override
@@ -66,7 +67,7 @@ public class ClientService implements IClientService{
         }
         else
         {
-            throw new EntityNotFoundException("Employee with id " + id + " not found");
+            throw new IdNotFoundException(Client.class.getSimpleName());
         }
     }
     
