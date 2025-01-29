@@ -18,7 +18,6 @@ import com.riwi.BeautyCenter.domain.repositories.ClientRepository;
 import com.riwi.BeautyCenter.infrastructure.abstract_services.IClientService;
 import com.riwi.BeautyCenter.util.exceptions.IdNotFoundException;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 
 @Service

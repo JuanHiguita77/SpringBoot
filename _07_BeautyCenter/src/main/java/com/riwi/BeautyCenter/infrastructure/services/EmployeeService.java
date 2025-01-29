@@ -16,6 +16,7 @@ import com.riwi.BeautyCenter.domain.entities.Appointment;
 import com.riwi.BeautyCenter.domain.entities.Employee;
 import com.riwi.BeautyCenter.domain.repositories.EmployeeRepository;
 import com.riwi.BeautyCenter.infrastructure.abstract_services.IEmployeeService;
+import com.riwi.BeautyCenter.util.exceptions.IdNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -30,7 +31,7 @@ public class EmployeeService implements IEmployeeService
     @Override
     public EmployeeResponse findById(Long id) 
     {
-        return this.entityToResponse(this.employeeRepository.findById(id).orElse(null)); 
+        return this.entityToResponse(this.employeeRepository.findById(id).orElseThrow(() -> new IdNotFoundException(Employee.class.getSimpleName()))); 
     }
 
     @Override
