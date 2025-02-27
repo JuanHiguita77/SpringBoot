@@ -1,0 +1,109 @@
+# Directives
+directive @NotBlank(message: String = "Name is obligatory") on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+# Define principal types
+type BrandDTO {
+    id: ID
+    name: String!
+    country: Country!
+    models: [ModelDTO!]
+}
+
+type ModelDTO {
+    id: ID
+    brandId: ID
+    name: String!
+}
+
+# Enum para el país
+enum Country {
+    GER 
+    ENG 
+    ES 
+    JP
+    US
+    FR
+    KR
+}
+
+# Enum para el TokenType
+enum TokenType {
+    BEARER
+}
+
+# Paginación
+type BrandPage {
+    content: [BrandDTO!]!
+    totalElements: Int!
+    totalPages: Int!
+}
+
+type ModelPage {
+    content: [ModelDTO!]!
+    totalElements: Int!
+    totalPages: Int!
+}
+
+# Tipo para el registro y login
+type TokenResponse {
+    token: String!
+    refreshToken: String!
+    type: TokenType!
+    revoked: Boolean!
+    expired: Boolean!
+}
+
+# Inputs para las operaciones de creación/actualización
+input BrandInput {
+    name: String! @NotBlank
+    country: Country!
+}
+
+input ModelInput {
+    name: String! @NotBlank
+    brandId: ID!
+}
+
+# Inputs para registrar y logear
+input RegisterRequestInput{
+    name: String @NotBlank
+    email: String @NotBlank
+    password: String @NotBlank
+}
+
+input LoginRequestInput{
+    email: String @NotBlank
+    password: String @NotBlank
+}
+
+# Queries para obtener información
+type Query {
+    getAllBrands(page: Int, size: Int): BrandPage
+    getAllModels(page: Int, size: Int): ModelPage
+    getBrandById(id: ID!): BrandDTO
+    getModelById(id: ID!): ModelDTO
+    getModelsByBrandId(brandId: ID, page: Int, size: Int): ModelPage
+}
+
+# Mutations para crear, actualizar y eliminar
+type Mutation {
+    createBrand(request: BrandInput!): BrandDTO!
+    updateBrand(id: ID!, request: BrandInput!): BrandDTO!
+    deleteBrand(id: ID!): Boolean
+
+    createModel(request: ModelInput!): ModelDTO!
+    updateModel(id: ID!, request: ModelInput!): ModelDTO!
+    deleteModel(id: ID!): Boolean
+
+    register(request: RegisterRequestInput!): TokenResponse!
+    login(request: LoginRequestInput!): TokenResponse!
+    refreshToken(refreshToken: String!): TokenResponse!
+    logout(token: String!): Boolean
+}
+
+type Subscription{
+    getAllBrandsFlux: BrandDTO
+    getMonoBrandFlux(id: ID!): BrandDTO
+}
+
+
