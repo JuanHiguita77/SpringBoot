@@ -2,6 +2,8 @@ package com.riwi.librosYa.domain.entities;
 
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWarDeployment;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

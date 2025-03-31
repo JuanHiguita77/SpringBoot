@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Springboot Websocket</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+    <div class="username-page">
+        <form id="usernameForm">
+            <input type="text" id="usernameInput" placeholder="Enter your username">
+            <button type="submit">Enter Chat</button>
+        </form>
+    </div>
+
+    <div id="chat-page" class="hidden">
+        <div id="chat-header">
+            <h2>Springboot websocke chat Demo by JuanYH</h2>
+        </div>
+        <div id="chat-messages">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <div id="chat-input">
+            <form id="messageForm">
+                <input type="text" id="messageInput" placeholder="Type your message">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.4/stomp.min.js"></script>
+</body>
+</html>

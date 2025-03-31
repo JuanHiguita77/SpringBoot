@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styles for the username page */
+.username-page {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.username-page input[type="text"] {
+    padding: 10px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.username-page button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Styles for the chat page */
+#chat-page {
+    display: none;
+    margin-top: 50px;
+}
+
+#chat-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#chat-messages {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+#chat-input {
+    margin-top: 20px;
+}
+
+#chat-input input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+#chat-input button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
