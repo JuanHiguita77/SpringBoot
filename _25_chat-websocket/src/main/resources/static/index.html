@@ -9,6 +9,7 @@
 <body>
 
     <div class="username-page">
+        <h1>Welcome to Chatroom Springboot Websocket Demo</h1>
         <form id="usernameForm">
             <input type="text" id="usernameInput" placeholder="Enter your username">
             <button type="submit">Enter Chat</button>
@@ -17,12 +18,16 @@
 
     <div id="chat-page" class="hidden">
         <div id="chat-header">
-            <h2>Springboot websocke chat Demo by JuanYH</h2>
+            <h2>Springboot websocket chat Demo by JuanYH</h2>
+        </div>
+        <div class="connecting">
+            <p>Connecting...</p>
         </div>
         <div id="chat-messages">
             <!-- Chat messages will be displayed here -->
         </div>
         <div id="chat-input">
+            <button id="closebtn"> Close chat </button>
             <form id="messageForm">
                 <input type="text" id="messageInput" placeholder="Type your message">
                 <button type="submit">Send</button>
@@ -30,8 +35,8 @@
         </div>
     </div>
 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.4/stomp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>
