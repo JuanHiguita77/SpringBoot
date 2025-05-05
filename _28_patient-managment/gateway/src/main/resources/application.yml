@@ -1,0 +1,23 @@
+server:
+  port: 8083
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        # Ruta al servicio de pacientes usando el nombre del contenedor
+        - id: patient-service-route
+          uri: http://patient-service-container:8080
+          predicates:
+            - Path=/api/patients/**
+          filters:
+            - StripPrefix=1
+
+        # Ruta para la documentación del servicio de pacientes 
+        - id: api-docs-patient-route
+          uri: http://patient-service-container:8080
+          predicates:
+            - Path=/api-docs/patients
+          filters:
+            - RewritePath=/api-docs/patients,/v3/api-docs
+
