@@ -57,7 +57,7 @@ public class PatientService implements IPatientService {
     @Override
     public PatientResponseDTO create(PatientRequestDTO patientRequestDTO) {
         // Validación para el email repetido
-        patientRepository.findByEmail(patientRequestDTO.email())
+        patientRepository.findByEmail(patientRequestDTO.getEmail())
             .ifPresent(p -> {
                 throw new BadRequestException("Email already registered!");
             });

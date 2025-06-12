@@ -26,4 +26,4 @@ INSERT INTO patient (
     ('550e8400-e29b-41d4-a716-446655440006', 'Ethan Harris', 'ethanh@example.com', '5566778899', '159 Cedar St', '1998-02-14', '2023-01-07'),
     ('550e8400-e29b-41d4-a716-446655440007', 'Fiona Green', 'fionag@example.com', '6677889900', '753 Walnut St', '1980-08-08', '2023-01-08'),
     ('550e8400-e29b-41d4-a716-446655440008', 'George Hill', 'georgeh@example.com', '7788990011', '852 Spruce St', '1970-04-18', '2023-01-09'),
-    ('550e8400-e29b-41d4-a716-446655440009', 'Hannah Lee', 'hannahl@example.com', '8899001122', '951 Cherry St', '1992-06-22', '2023-01-10');
+    ('550e8400-e29b-41d4-a716-446655440009', 'Hannah Lee', 'hannahl@example.com', '8899001122', '951 Cherry St', '1992-06-22', '2023-01-10') ON CONFLICT (id) DO NOTHING;

@@ -1,0 +1,142 @@
+
+LocalStack version: 4.5.1.dev13
+LocalStack build date: 2025-06-06
+LocalStack build git hash: 5cfec717c
+
+2025-06-07T23:17:46.385  INFO --- [  MainThread] l.p.c.b.licensingv2        : Successfully activated cached license 0fb1fb52-b1aa-4968-a980-bce074e41a67:trial from /var/lib/localstack/cache/license.json 🔑✅
+2025-06-07T23:17:59.260  INFO --- [  MainThread] l.p.c.extensions.platform  : loaded 0 extensions
+Ready.
+2025-06-07T23:18:05.983  INFO --- [uest_thread)] localstack.dns.server      : Unable to get DNS result from upstream server 192.168.65.7 for domain analytics.localstack.cloud.: The DNS operation timed out.
+2025-06-07T23:21:37.024  INFO --- [et.reactor-0] localstack.request.http    : GET /_localstack/info => 200
+2025-06-07T23:21:47.922  INFO --- [et.reactor-0] localstack.request.http    : GET /_localstack/info => 200
+2025-06-07T23:22:08.174  INFO --- [et.reactor-0] localstack.utils.bootstrap : Execution of "_load_service_plugin" took 1049.41ms
+2025-06-07T23:22:08.176  INFO --- [et.reactor-0] localstack.utils.bootstrap : Execution of "require" took 1053.37ms
+2025-06-07T23:22:10.895  INFO --- [et.reactor-0] localstack.request.aws     : AWS cloudformation.DescribeStacks => 400 (ValidationError)
+2025-06-07T23:22:11.001  INFO --- [et.reactor-1] localstack.request.aws     : AWS cloudformation.CreateChangeSet => 200
+2025-06-07T23:22:11.030  INFO --- [et.reactor-0] localstack.request.aws     : AWS cloudformation.DescribeChangeSet => 200
+2025-06-07T23:22:11.094  INFO --- [et.reactor-1] localstack.request.aws     : AWS cloudformation.ExecuteChangeSet => 200
+2025-06-07T23:22:11.120  INFO --- [et.reactor-0] localstack.request.aws     : AWS cloudformation.DescribeStacks => 200
+2025-06-07T23:22:16.742  INFO --- [et.reactor-0] localstack.utils.bootstrap : Execution of "_load_service_plugin" took 3199.95ms
+2025-06-07T23:22:16.743  INFO --- [et.reactor-0] localstack.utils.bootstrap : Execution of "require" took 3200.45ms
+2025-06-07T23:22:18.018  WARN --- [et.reactor-0] l.aws.protocol.serializer  : Response object CreateSecretResponse contains a member which is not specified: ResponseMetadata
+2025-06-07T23:22:18.128  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object CreateSecretResponse contains a member which is not specified: ResponseMetadata
+2025-06-07T23:22:18.247  INFO --- [et.reactor-0] l.p.c.s.e.l.firelens       : Enabling ECS firelens feature
+2025-06-07T23:22:23.778  INFO --- [uest_thread)] localstack.dns.server      : Unable to get DNS result from upstream server 192.168.65.7 for domain analytics.localstack.cloud.: The DNS operation timed out.
+2025-06-07T23:22:35.201  INFO --- [et.reactor-1] localstack.utils.bootstrap : Execution of "_load_service_plugin" took 10126.01ms
+2025-06-07T23:22:35.201  INFO --- [et.reactor-1] localstack.utils.bootstrap : Execution of "require" took 10126.34ms
+2025-06-07T23:22:35.832  INFO --- [-functhread6] l.p.c.s.kafka.provider     : Starting local Zookeeper/Kafka brokers on ports 4510/4511
+2025-06-07T23:22:41.141  INFO --- [et.reactor-1] localstack.request.aws     : AWS cloudformation.DescribeStacks => 200
+2025-06-07T23:22:46.298  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object TaskSet contains a member which is not specified: regionName
+2025-06-07T23:22:46.298  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object TaskSet contains a member which is not specified: clientToken
+2025-06-07T23:22:46.419  INFO --- [et.reactor-2] l.u.container_networking   : Determined main container network: bridge
+2025-06-07T23:22:46.515  INFO --- [et.reactor-2] l.u.container_networking   : Determined main container target IP: 172.17.0.2
+2025-06-07T23:22:53.332  INFO --- [et.reactor-2] l.u.container_networking   : Determined main container target IP: 172.17.0.2
+2025-06-07T23:22:53.364  INFO --- [   Thread-67] l.p.c.s.e.container_execut : Starting ECS task in Docker: image billing-service, container ls-ecs-PatientManagementEcsCluster3407F30E-30c7546a-19970f6d-e448-4a24-8677-ccd3039dfbb2-0-7272e929, command None
+2025-06-07T23:22:53.769  INFO --- [et.reactor-1] l.services.events.provider : {"InfoCode": "InternalInfoEvents at process_rules", "InfoMessage": "No rules attached to event_bus: default"}
+2025-06-07T23:22:54.473  WARN --- [et.reactor-0] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: clusterName
+2025-06-07T23:22:54.474  WARN --- [et.reactor-0] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: regionName
+2025-06-07T23:22:54.475  WARN --- [et.reactor-0] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: enableEcsManagedTags
+2025-06-07T23:22:55.077  INFO --- [   Thread-68] l.p.core.utils.postgresql  : Starting PostgreSQL query listener/rewriter on port 4512->39015
+2025-06-07T23:22:56.081  WARN --- [functhread13] l.pro.core.packages.core   : postgresql will be installed as an OS package, even though install target is _not_ set to be static.
+2025-06-07T23:23:11.162  INFO --- [et.reactor-0] localstack.request.aws     : AWS cloudformation.DescribeStacks => 200
+2025-06-07T23:23:19.980  INFO --- [functhread13] l.p.c.s.r.engine_postgres  : Starting RDS server on port 4512 (backend port 39015) - database "auth-service-db", user "admin_user" - data dir /var/lib/localstack/tmp/rds/postgres/000000000000/instance/000000000000/us-east-1/db-45ae4282
+2025-06-07T23:23:41.180  INFO --- [et.reactor-0] localstack.request.aws     : AWS cloudformation.DescribeStacks => 200
+2025-06-07T23:23:56.214  INFO --- [   Thread-88] l.p.core.utils.postgresql  : Starting PostgreSQL query listener/rewriter on port 4513->39349
+2025-06-07T23:23:57.218  INFO --- [functhread14] l.p.c.s.r.engine_postgres  : Starting RDS server on port 4513 (backend port 39349) - database "patient-service-db", user "admin_user" - data dir /var/lib/localstack/tmp/rds/postgres/000000000000/instance/000000000000/us-east-1/db-ca906d51
+2025-06-07T23:24:11.206  INFO --- [et.reactor-2] localstack.request.aws     : AWS cloudformation.DescribeStacks => 200
+2025-06-07T23:24:34.117  WARN --- [et.reactor-2] l.aws.protocol.serializer  : Response object TaskSet contains a member which is not specified: regionName
+2025-06-07T23:24:34.117  WARN --- [et.reactor-2] l.aws.protocol.serializer  : Response object TaskSet contains a member which is not specified: clientToken
+2025-06-07T23:24:37.201  INFO --- [   Thread-96] l.p.c.s.e.container_execut : Starting ECS task in Docker: image analytics-service, container ls-ecs-PatientManagementEcsCluster3407F30E-30c7546a-2e4ea6da-eff4-4ba7-8c5c-684dbc9a84c6-0-e1a4b852, command None
+2025-06-07T23:24:37.263  INFO --- [et.reactor-2] l.services.events.provider : {"InfoCode": "InternalInfoEvents at process_rules", "InfoMessage": "No rules attached to event_bus: default"}
+2025-06-07T23:24:37.913  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: clusterName
+2025-06-07T23:24:37.914  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: regionName
+2025-06-07T23:24:37.915  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: enableEcsManagedTags
+2025-06-07T23:24:40.853  WARN --- [et.reactor-0] l.aws.protocol.serializer  : Response object TaskSet contains a member which is not specified: regionName
+2025-06-07T23:24:40.853  WARN --- [et.reactor-0] l.aws.protocol.serializer  : Response object TaskSet contains a member which is not specified: clientToken
+2025-06-07T23:24:41.225  INFO --- [et.reactor-0] localstack.request.aws     : AWS cloudformation.DescribeStacks => 200
+2025-06-07T23:24:43.902  INFO --- [   Thread-99] l.p.c.s.e.container_execut : Starting ECS task in Docker: image api-gateway-patients, container ls-ecs-PatientManagementEcsCluster3407F30E-30c7546a-27fff68c-c0ef-401d-b92c-35b43c5e2419-0-2e5e9ab5, command None
+2025-06-07T23:24:43.952  INFO --- [et.reactor-0] l.services.events.provider : {"InfoCode": "InternalInfoEvents at process_rules", "InfoMessage": "No rules attached to event_bus: default"}
+2025-06-07T23:24:44.591  WARN --- [et.reactor-2] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: clusterName
+2025-06-07T23:24:44.591  WARN --- [et.reactor-2] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: regionName
+2025-06-07T23:24:44.593  WARN --- [et.reactor-2] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: enableEcsManagedTags
+2025-06-07T23:24:45.045  WARN --- [et.reactor-2] l.aws.protocol.serializer  : Response object TaskSet contains a member which is not specified: regionName
+2025-06-07T23:24:45.045  WARN --- [et.reactor-2] l.aws.protocol.serializer  : Response object TaskSet contains a member which is not specified: clientToken
+2025-06-07T23:24:48.601  INFO --- [  Thread-103] l.p.c.s.e.container_execut : Starting ECS task in Docker: image auth-service, container ls-ecs-PatientManagementEcsCluster3407F30E-30c7546a-f15731bf-c468-41bd-b8d0-643924824502-0-f1601ca6, command None
+2025-06-07T23:24:48.655  INFO --- [et.reactor-2] l.services.events.provider : {"InfoCode": "InternalInfoEvents at process_rules", "InfoMessage": "No rules attached to event_bus: default"}
+2025-06-07T23:24:49.479  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: clusterName
+2025-06-07T23:24:49.479  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: regionName
+2025-06-07T23:24:49.480  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: enableEcsManagedTags
+2025-06-07T23:24:50.067  WARN --- [et.reactor-3] l.aws.protocol.serializer  : Response object TaskSet contains a member which is not specified: regionName
+2025-06-07T23:24:50.068  WARN --- [et.reactor-3] l.aws.protocol.serializer  : Response object TaskSet contains a member which is not specified: clientToken
+2025-06-07T23:24:54.657  INFO --- [  Thread-106] l.p.c.s.e.container_execut : Starting ECS task in Docker: image patient-service, container ls-ecs-PatientManagementEcsCluster3407F30E-30c7546a-c106ac8c-4cbc-405c-b48c-8779fab4b846-0-1132178e, command None
+2025-06-07T23:24:54.715  INFO --- [et.reactor-3] l.services.events.provider : {"InfoCode": "InternalInfoEvents at process_rules", "InfoMessage": "No rules attached to event_bus: default"}
+2025-06-07T23:24:55.779  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: clusterName
+2025-06-07T23:24:55.783  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: regionName
+2025-06-07T23:24:55.783  WARN --- [et.reactor-1] l.aws.protocol.serializer  : Response object Service contains a member which is not specified: enableEcsManagedTags
+2025-06-07T23:25:06.481  INFO --- [et.reactor-0] l.services.events.provider : {"InfoCode": "InternalInfoEvents at process_rules", "InfoMessage": "No rules attached to event_bus: default"}
+2025-06-07T23:25:06.550  WARN --- [  Thread-103] l.p.c.s.e.container_execut : Task 'f15731bf-c468-41bd-b8d0-643924824502' exited unsuccessfully; logs:
+2025-06-07T23:25:06.609  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 
+2025-06-07T23:25:06.610  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502]   .   ____          _            __ _ _
+2025-06-07T23:25:06.613  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502]  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2025-06-07T23:25:06.614  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2025-06-07T23:25:06.614  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502]  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2025-06-07T23:25:06.614  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502]   '  |____| .__|_| |_|_| |_\__, | / / / /
+2025-06-07T23:25:06.614  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502]  =========|_|==============|___/=/_/_/_/
+2025-06-07T23:25:06.614  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 
+2025-06-07T23:25:06.614  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502]  :: Spring Boot ::                (v3.4.3)
+2025-06-07T23:25:06.614  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 
+2025-06-07T23:25:06.614  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 2025-06-07T23:24:57.248Z  INFO 1 --- [           main] com.juan.gateway.GatewayApplication      : Starting GatewayApplication v0.0.1-SNAPSHOT using Java 21 with PID 1 (/app/app.jar started by root in /app)
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 2025-06-07T23:24:57.263Z  INFO 1 --- [           main] com.juan.gateway.GatewayApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 2025-06-07T23:25:01.758Z  INFO 1 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=7679e567-cceb-3ca3-a015-8ac8797a1cd1
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 2025-06-07T23:25:05.550Z  WARN 1 --- [           main] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jwtValidationGatewayFilterFactory' defined in URL [jar:nested:/app/app.jar/!BOOT-INF/classes/!/com/juan/gateway/filter/JwtValidationGatewayFilterFactory.class]: Unexpected exception during bean creation
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 2025-06-07T23:25:05.582Z  INFO 1 --- [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 2025-06-07T23:25:05.692Z ERROR 1 --- [           main] o.s.boot.SpringApplication               : Application run failed
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jwtValidationGatewayFilterFactory' defined in URL [jar:nested:/app/app.jar/!BOOT-INF/classes/!/com/juan/gateway/filter/JwtValidationGatewayFilterFactory.class]: Unexpected exception during bean creation
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:536) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:346) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.615  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-3.4.3.jar!/:3.4.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.3.jar!/:3.4.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.3.jar!/:3.4.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.3.jar!/:3.4.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.3.jar!/:3.4.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.3.jar!/:3.4.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at com.juan.gateway.GatewayApplication.main(GatewayApplication.java:10) ~[!/:0.0.1-SNAPSHOT]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:102) ~[app.jar:0.0.1-SNAPSHOT]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.boot.loader.launch.Launcher.launch(Launcher.java:64) ~[app.jar:0.0.1-SNAPSHOT]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.boot.loader.launch.JarLauncher.main(JarLauncher.java:40) ~[app.jar:0.0.1-SNAPSHOT]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] Caused by: org.springframework.util.PlaceholderResolutionException: Could not resolve placeholder 'auth.service.url' in value "${auth.service.url}"
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.util.PlaceholderResolutionException.withValue(PlaceholderResolutionException.java:81) ~[spring-core-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.616  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.util.PlaceholderParser$ParsedValue.resolve(PlaceholderParser.java:423) ~[spring-core-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.617  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.util.PlaceholderParser.replacePlaceholders(PlaceholderParser.java:128) ~[spring-core-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.617  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:118) ~[spring-core-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.617  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:114) ~[spring-core-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.617  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:255) ~[spring-core-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.617  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:226) ~[spring-core-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.617  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:201) ~[spring-context-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.617  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:971) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.617  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1574) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.618  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1552) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.618  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.618  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.618  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.618  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1381) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.618  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1218) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.618  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.618  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.3.jar!/:6.2.3]
+2025-06-07T23:25:06.618  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 	... 21 common frames omitted
+2025-06-07T23:25:06.618  WARN --- [  Thread-103] l.p.c.s.e.container_execut : [f15731bf-c468-41bd-b8d0-643924824502] 
+2025-06-07T23:25:11.247  INFO --- [et.reactor-1] localstack.request.aws     : AWS cloudformation.DescribeStacks => 200
+2025-06-07T23:25:17.677  INFO --- [et.reactor-2] localstack.request.aws     : AWS elbv2.DescribeLoadBalancers => 200

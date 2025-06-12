@@ -5,6 +5,14 @@ spring:
   cloud:
     gateway:
       routes:
+        # Ruta para el servicio de autenticación
+        - id: auth-service-route
+          uri: http://auth-service-container:8084
+          predicates:
+            - Path=/auth/**
+          filters:  
+            - StripPrefix=1
+
         # Ruta al servicio de pacientes usando el nombre del contenedor
         - id: patient-service-route
           uri: http://patient-service-container:8080
@@ -12,6 +20,7 @@ spring:
             - Path=/api/patients/**
           filters:
             - StripPrefix=1
+            - JwtValidation
 
         # Ruta para la documentación del servicio de pacientes 
         - id: api-docs-patient-route
@@ -19,5 +28,12 @@ spring:
           predicates:
             - Path=/api-docs/patients
           filters:
-            - RewritePath=/api-docs/patients,/v3/api-docs
+            - RewritePath=/api-docs/patients/(?<segment>.*), /${segment}
 
+        # Ruta para la documentación del servicio de autenticación
+        - id: api-docs-auth-route
+          uri: http://auth-service-container:8084
+          predicates:
+            - Path=/swagger-ui/**
+          filters:
+            - RewritePath=/swagger-ui/index.html

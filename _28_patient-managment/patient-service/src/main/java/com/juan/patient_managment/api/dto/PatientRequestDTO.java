@@ -6,31 +6,37 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Builder
-public record PatientRequestDTO(
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PatientRequestDTO {
 
     @NotBlank(message = "Name is mandatory") 
     @Size(min = 3, max = 50, message = "Name should be between 3 and 50 characters") 
-    String name,
+    private String name;
     
     @Email(message = "Email should be valid") 
     @NotBlank(message = "Email is mandatory") 
-    String email,
+    private String email;
 
     @NotBlank(message = "Phone is mandatory")
     @Size(min = 10, max = 15, message = "Phone should be between 10 and 15 characters")
-     String phone,
+    private String phone;
 
     @NotNull(message = "Address is mandatory")
     @Size(min = 5, max = 100, message = "Address should be between 5 and 100 characters")
-    String address,
+    private String address;
 
     @NotNull(message = "Birth date is mandatory")
-    LocalDate birthDate,
+    private LocalDate birthDate;
 
     @NotNull(message = "Registry date is mandatory")
-    LocalDate registryDate
+    private LocalDate registryDate;
 
-) {}
+}

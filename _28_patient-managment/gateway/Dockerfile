@@ -17,7 +17,7 @@ EXPOSE 8083
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
-#docker run -d  --name api-gateway-patients-container -p 8083:8083 --network internal-network api-gateway-patients:latest
+#docker run -d  --name api-gateway-patients-container -p 8083:8083 --network internal-network -e AUTH_SERVICE_URL=http://auth-service-container:8084 api-gateway-patients:latest
 
 #docker build -t api-gateway-patients .
 
